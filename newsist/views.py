@@ -41,14 +41,11 @@ class PostNewsView(APIView):
         serializer = NewsSerializer(data = request.data)
         if serializer.is_valid():
             serializer.save()
-            print(serializer.data)
-            print(True)
             id = request.data.get('creted_by')
             try:
                 admin = Admins.objects.get(id=id)
                 admin.count_news += 1
                 admin.save()
-                print(admin.count_news)
             except Admins.DoesNotExist:
                 return Response({"error": "Admin not found"}, status=404)
             print("sss")
@@ -185,18 +182,18 @@ class LoginView(APIView):
 
 #
 # # for delete old news automatic
-# class DeleteNews(APIView):
-#     queryset = News.objects.all()
-#     serializer = NewsSerializer()
-#
-#     def delete(self):
-#         news = News.objects.first()
-#         if news is not None:
-#             news_month = news.created_at.strftime("%m")
-#             current_month = datetime.now().strftime("%m")
-#             if news_month < current_month:
-#                 news.delete()
-#                 return Response("News deleted successfully.")
-#         return Response("No news to delete or it's not the right time to delete.")
+class DeleteNews(APIView):
+    queryset = News.objects.all()
+    serializer = NewsSerializer()
+
+    def delete(self):
+        news = News.objects.first()
+        if news is not None:
+            news_month = news.created_at.strftime("%m")
+            current_month = datetime.now().strftime("%m")
+            if news_month < current_month:
+                news.delete()
+                return Response("News deleted successfully.")
+        return Response("No news to delete or it's not the right time to delete.")
 #
 #
