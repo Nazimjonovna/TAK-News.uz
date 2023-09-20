@@ -1,0 +1,49 @@
+# Byte-compiled / optimized Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Local development settings
+*.sqlite3
+*.db
+*.log
+
+# Media and static files (assuming you use Django's default settings)
+/media/
+/staticfiles/
+/static/
+
+# Secret keys and sensitive information (never commit these)
+*.env
+*.ini
+*.conf
+
+# Dependency directories (Python 2/3)
+__pycache__
+.pytest_cache/
+pycscope.out
+__init__.py
+*/__pycache__/
+*.egg-info/
+dist/
+build/
+
+# Environment-specific files
+.env
+.env.local
+.env.*.local
+
+# VS Code settings (if you use Visual Studio Code)
+.vscode/
+
+# PyCharm settings (if you use PyCharm)
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
